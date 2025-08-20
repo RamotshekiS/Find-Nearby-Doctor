@@ -15,3 +15,4 @@ public class AppointmentDto {
     private AppointmentStatus status;
 
 }
+

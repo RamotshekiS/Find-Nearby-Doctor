@@ -23,7 +23,7 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    private LocalDateTime createAt = LocalDateTime.now();
+   // private LocalDateTime createAt = LocalDateTime.now();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Appointment> appointments;

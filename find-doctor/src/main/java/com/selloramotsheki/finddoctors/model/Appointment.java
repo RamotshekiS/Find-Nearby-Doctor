@@ -22,7 +22,6 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime appointmentDate;
-
     @Enumerated(EnumType.STRING)
     private AppointmentStatus status;
 
