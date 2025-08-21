@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 public class AppointmentDto {
     private Long id;
     private LocalDateTime appointmentDate;
-    @Enumerated(EnumType.STRING)
-    private AppointmentStatus status;
-
+    private String status;
+    private Long userId;
 }
+
 
