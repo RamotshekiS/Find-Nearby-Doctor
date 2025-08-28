@@ -44,3 +44,4 @@ public class AppointmentService implements IAppointmentService{
         return modelMapper.map(appointment, AppointmentDto.class);
     }
 }
+

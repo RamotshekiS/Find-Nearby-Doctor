@@ -47,8 +47,6 @@ public class DoctorService implements IDoctorService{
             return specializationRepository.save(newSpecialization);
         });
 
-
-
         // 3. Create doctor and set facility + specialization
         Doctor doctor = new Doctor(
                 request.getFirstName(),

@@ -3,12 +3,15 @@ package com.selloramotsheki.finddoctors.service.User;
 import com.selloramotsheki.finddoctors.Dto.UserDto;
 import com.selloramotsheki.finddoctors.exceptions.AlreadyExistsException;
 import com.selloramotsheki.finddoctors.exceptions.ResourceNotFound;
+import com.selloramotsheki.finddoctors.model.Role;
 import com.selloramotsheki.finddoctors.model.User;
+import com.selloramotsheki.finddoctors.repository.RoleRepository;
 import com.selloramotsheki.finddoctors.repository.UserRepository;
 import com.selloramotsheki.finddoctors.request.CreateUserRequest;
 import com.selloramotsheki.finddoctors.request.UpdateUserRequest;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,6 +22,8 @@ public class UserService implements IUserService{
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
+    private final PasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
 
     @Override
     public User createUser(CreateUserRequest request) {
@@ -29,7 +34,12 @@ public class UserService implements IUserService{
                     user.setFirstName(request.getFirstName());
                     user.setLastName(request.getLastName());
                     user.setEmail(request.getEmail());
-                    user.setPassword(req.getPassword());
+                    user.setPassword(passwordEncoder.encode(request.getPassword()));
+
+                    // ✅ fetch USER
+                    Role roleUser = roleRepository.findByName("USER");
+                    // ✅ assign role
+                    user.getRoles().add(roleUser);
                     return userRepository.save(user);
                 }).orElseThrow(() -> new AlreadyExistsException("User with the " + request.getEmail() + " already exists!"));
     }
@@ -40,10 +50,6 @@ public class UserService implements IUserService{
                 .orElseThrow(() -> new ResourceNotFound("User not found!"));
     }
 
-//    @Override
-//    public List<User> getAllUsers() {
-//        return userRepository.findAll();
-//    }
 
     @Override
     public User updateUser(UpdateUserRequest request, Long userId) {
