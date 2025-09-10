@@ -1,0 +1,102 @@
+
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-5 rounded-4 shadow-lg" 
+       style="max-width: 600px; width: 100%; background: linear-gradient(135deg, #e0f7ff, #d9e6ff);">
+    <h2 class="text-center mb-4 fw-bold" style="color: #334e68;">Create Account</h2>
+
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm" novalidate>
+
+      <!-- First Name -->
+      <div class="form-floating mb-3 position-relative">
+        <input 
+          type="text" 
+          class="form-control rounded-3 ps-5" 
+          id="firstName" 
+          placeholder="First Name"
+          [(ngModel)]="signupData.firstName" 
+          name="firstName" 
+          required>
+        <label for="firstName">First Name</label>
+        <i class="bi bi-person-fill position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+        <div class="text-danger mt-1" *ngIf="signupForm.submitted && !signupData.firstName">
+          First name is required.
+        </div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-floating mb-3 position-relative">
+        <input 
+          type="text" 
+          class="form-control rounded-3 ps-5" 
+          id="lastName" 
+          placeholder="Last Name"
+          [(ngModel)]="signupData.lastName" 
+          name="lastName" 
+          required>
+        <label for="lastName">Last Name</label>
+        <i class="bi bi-person-fill position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+      </div>
+
+      <!-- Email -->
+      <div class="form-floating mb-3 position-relative">
+        <input 
+          type="email" 
+          class="form-control rounded-3 ps-5" 
+          id="email" 
+          placeholder="Email"
+          [(ngModel)]="signupData.email" 
+          name="email" 
+          required>
+        <label for="email">Email</label>
+        <i class="bi bi-envelope-fill position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+        <div class="text-danger mt-1" *ngIf="signupForm.submitted && !signupData.email">
+          Valid email is required.
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-floating mb-3 position-relative">
+        <input 
+          [type]="showPassword ? 'text' : 'password'" 
+          class="form-control rounded-3 ps-5" 
+          id="password" 
+          placeholder="Password"
+          [(ngModel)]="signupData.password" 
+          name="password" 
+          required
+          minlength="6">
+        <label for="password">Password</label>
+        <i class="bi bi-lock-fill position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 end-0 translate-middle-y me-2" 
+          (click)="showPassword = !showPassword">
+          {{ showPassword ? 'Hide' : 'Show' }}
+        </button>
+        <div class="text-danger mt-1" *ngIf="signupForm.submitted && (!signupData.password || signupData.password.length < 6)">
+          Password must be at least 6 characters.
+        </div>
+      </div>
+
+      <!-- Sign Up Button -->
+      <button class="btn btn-primary w-100 py-2 fw-bold rounded-3" 
+              type="submit" 
+              [disabled]="signupForm.invalid || loading"
+              style="background: linear-gradient(90deg, #5a8dee, #1fd1f9); border: none;">
+        Sign Up
+        <span *ngIf="loading" class="spinner-border spinner-border-sm ms-2"></span>
+      </button>
+    </form>
+
+    <!-- Social Signup -->
+    <div class="text-center mt-4">
+      <p class="text-muted mb-2">Or sign up with</p>
+      <button class="btn btn-outline-danger me-2 rounded-3"><i class="bi bi-google"></i> Google</button>
+      <button class="btn btn-outline-primary rounded-3"><i class="bi bi-facebook"></i> Facebook</button>
+    </div>
+
+    <!-- Success/Failure Message -->
+    <div *ngIf="message" class="alert mt-3 rounded-3" [ngClass]="{'alert-success': success, 'alert-danger': !success}">
+      {{ message }}
+    </div>
+  </div>
+</div>

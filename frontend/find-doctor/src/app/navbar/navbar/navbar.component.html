@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <h2 class="logo">Find Doctors</h2>
+  </div>
+
+  <div class="navbar-center">
+    <ul class="nav-links">
+      <li><a routerLink="/dashboard/user"><i class="fas fa-home"></i> Home</a></li>
+      <li><a routerLink="/dashboard/user/doctors"><i class="fas fa-user-md"></i> Doctors</a></li>
+      <li><a routerLink="/dashboard/user/appointments"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+      <li><a routerLink="/dashboard/user/settings"><i class="fas fa-cog"></i> Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="navbar-right">
+    <div class="user-profile">
+      <img src="assets/avatar.png" alt="User" class="avatar" />
+      <span>{{ user?.firstName }}</span>
+      <i class="fas fa-caret-down"></i>
+    </div>
+  </div>
+</nav>
+

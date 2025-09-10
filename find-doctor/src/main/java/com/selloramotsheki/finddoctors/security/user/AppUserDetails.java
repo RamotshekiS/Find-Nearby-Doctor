@@ -25,22 +25,40 @@ public class AppUserDetails implements UserDetails {
     private String lastName;
     private String firstName;
 
+    @Getter
+    private String role;
+
     private Collection<GrantedAuthority> authorities;
+
+    public AppUserDetails(Long id, String email, String password, String role, List<GrantedAuthority> authorities) {
+
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.authorities = authorities;
+    }
+
 
     public static AppUserDetails buildUserDetails(User user) {
         List<GrantedAuthority> authorities = user.getRoles()
                 .stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
+
+        // Assuming the user has only one role
+        String role = user.getRoles().stream()
+                .findFirst()
+                .map(r -> r.getName())
+                .orElse(null);
+
         return new AppUserDetails(
                 user.getId(),
                 user.getEmail(),
-                user.getPassword(),   // ✅ Correct
-                user.getLastName(),
-                user.getFirstName(),
+                user.getPassword(),// ✅ Correct
+                role,
                 authorities);
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -59,4 +77,7 @@ public class AppUserDetails implements UserDetails {
 
         return email;
     }
+
+
+
 }

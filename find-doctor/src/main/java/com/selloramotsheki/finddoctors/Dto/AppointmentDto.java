@@ -12,6 +12,7 @@ public class AppointmentDto {
     private Long id;
     private LocalDateTime appointmentDate;
     private String status;
+    private String specialty;
     private Long userId;
 }
 

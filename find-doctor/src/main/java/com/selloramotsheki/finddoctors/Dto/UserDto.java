@@ -12,4 +12,3 @@ public class UserDto {
     private String email;
     private List<AppointmentDto> appointments;
 }
-

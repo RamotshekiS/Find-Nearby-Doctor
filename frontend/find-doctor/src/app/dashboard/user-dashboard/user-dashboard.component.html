@@ -1,0 +1,55 @@
+<div class="dashboard">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul class="nav">
+      <li><a routerLink="/dashboard/user"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a routerLink="/dashboard/user/doctors"><i class="fas fa-user-md"></i> Doctors</a></li>
+      <li><a routerLink="/dashboard/user/appointments"><i class="fas fa-calendar-alt"></i> Appointments</a></li>
+      <li><a routerLink="/dashboard/user/settings"><i class="fas fa-cog"></i> Settings</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <h2>Welcome, {{ user?.firstName }}!</h2>
+
+    <div class="grid">
+      <!-- Find Nearby Doctors -->
+      <div class="card">
+        <h3>Find Nearby Doctors</h3>
+        <input type="text" placeholder="Search by name or specialty" />
+        <button>Search</button>
+      </div>
+
+      <!-- Upcoming Appointments -->
+      <div class="card">
+        <div class="card-header">
+          <h3>Upcoming Appointments</h3>
+          <a href="#">View All</a>
+        </div>
+        <div *ngFor="let appt of user?.appointments" class="appointment">
+          <i class="fas fa-user-md avatar"></i>
+          <span>{{ appt.appointmentDate | date:'short' }} - {{ appt.status }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Specialties -->
+    <h3>Top Specialties</h3>
+    <div class="specialties">
+      <div class="card" *ngFor="let s of specialties">
+        <i class="{{ s.icon }} specialty-icon"></i>
+        <strong>{{ s.name }}</strong>
+        <p>{{ s.count }} Nearby</p>
+      </div>
+    </div>
+
+    <!-- Health Tips -->
+    <h3>Health Tips</h3>
+    <div class="card">
+      <strong>Stay Hydrated</strong>
+      <p>Drink plenty of water throughout the day to maintain good health.</p>
+      <a href="#">Read More</a>
+    </div>
+  </main>
+</div>

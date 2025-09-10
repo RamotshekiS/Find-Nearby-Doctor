@@ -17,6 +17,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("${api.prefix}/users")
 public class UserController {
     private final IUserService userService;
@@ -26,7 +27,7 @@ public class UserController {
         try {
             User user = userService.createUser(request);
             UserDto userDto = userService.convertUserToDto(user);
-            return ResponseEntity.ok(new ApiResponse("Create user success", userDto));
+            return ResponseEntity.ok(new ApiResponse("User created Successfully!", userDto));
         } catch (AlreadyExistsException e) {
             return ResponseEntity.status(CONFLICT).body(new ApiResponse(e.getMessage(), null));
         }

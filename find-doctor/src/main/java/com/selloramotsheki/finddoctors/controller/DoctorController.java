@@ -19,6 +19,7 @@ import static org.springframework.http.HttpStatus.*;
 @RestController
 @RequestMapping("${api.prefix}/doctors")
 public class DoctorController {
+    
     private final IDoctorService doctorService;
 
     @PostMapping("/add")

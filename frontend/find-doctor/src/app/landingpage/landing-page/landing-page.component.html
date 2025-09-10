@@ -1,0 +1,74 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 py-2">
+  <a class="navbar-brand fw-bold text-primary" href="#">Find A Doctor NearBy</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav fw-bold me-3">
+      <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+    </ul>
+    <button class="btn btn-primary rounded-pill me-3 fw-bold" routerLink="/signup">Get Started</button>
+    <button class="btn btn-outline-primary rounded-pill fw-bold" routerLink="/login">Login</button>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero d-flex align-items-center py-5 px-4">
+  <div class="row w-100 align-items-center">
+    <!-- Left Text -->
+    <div class="col-md-6">
+      <h1 class="fw-bold mb-3">Find a <span class="text-primary">Doctor</span> And Book An <span class="text-primary">Appointment</span></h1>
+      <p class="text-muted mb-4">
+        We are a team of 50+ expert doctors with 24/7 service, 200+ beds,
+        home appointments, and video consultation.
+      </p>
+      <button class="btn btn-primary me-3" routerLink="/appointment">Make Appointment</button>
+      <button class="btn btn-outline-secondary">Play Video</button>
+    </div>
+    <!-- Right Image -->
+    <div class="col-md-6 text-center">
+      <img src="https://thumbs.dreamstime.com/z/black-fwmale-doctor-female-smiling-making-gesture-presentation-93348492.jpg" alt="Doctor" class="img-fluid rounded">
+    </div>
+  </div>
+</section>
+
+<!-- How it Works -->
+<section class="how-it-works text-center py-5 bg-light">
+  <h2 class="fw-bold mb-3">How it Works?</h2>
+  <p class="text-muted mb-5">4 Steps to get your solution</p>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card border-0 shadow-sm p-4 h-100">
+        <i class="bi bi-search text-primary fs-2 mb-3"></i>
+        <h5>Search Doctor</h5>
+        <p class="text-muted">Keeping you healthy is our priority</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card border-0 shadow-sm p-4 h-100">
+        <i class="bi bi-person-check text-primary fs-2 mb-3"></i>
+        <h5>Check Profile</h5>
+        <p class="text-muted">Choose from 100s of doctors</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card border-0 shadow-sm p-4 h-100">
+        <i class="bi bi-calendar-check text-primary fs-2 mb-3"></i>
+        <h5>Schedule</h5>
+        <p class="text-muted">Book appointment with details</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card border-0 shadow-sm p-4 h-100">
+        <i class="bi bi-check-circle text-primary fs-2 mb-3"></i>
+        <h5>Get Solution</h5>
+        <p class="text-muted">Best solution for your requirements</p>
+      </div>
+    </div>
+  </div>
+</section>
